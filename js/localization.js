@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('https://ipapi.co/json/');
+        const response = await fetch('https://get.geojs.io/v1/ip/country.json');
         const data = await response.json();
-        const country = data.country_code; // e.g., 'DE', 'US', 'PK'
+        const country = data.country; // e.g., 'DE', 'US', 'PK'
 
         // console.log('Detected Country:', country);
 
