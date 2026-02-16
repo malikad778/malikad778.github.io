@@ -105,20 +105,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Mobile header dropdown
-            const dropdownBtn = document.getElementById('lang-dropdown-btn');
-            const dropdown = document.getElementById('lang-dropdown');
+            const mobileDropdownBtn = document.getElementById('mobile-lang-dropdown-btn');
+            const mobileDropdown = document.getElementById('mobile-lang-dropdown');
 
-            if (dropdownBtn && dropdown) {
-                dropdownBtn.addEventListener('click', function (e) {
+            if (mobileDropdownBtn && mobileDropdown) {
+                mobileDropdownBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    dropdown.classList.toggle('hidden');
+                    mobileDropdown.classList.toggle('hidden');
                 });
 
                 document.addEventListener('click', function () {
-                    dropdown.classList.add('hidden');
+                    mobileDropdown.classList.add('hidden');
                 });
 
-                dropdown.addEventListener('click', function (e) {
+                mobileDropdown.addEventListener('click', function (e) {
                     e.stopPropagation();
                 });
             }
@@ -214,12 +214,12 @@
         <div class="text-xl font-bold text-black dark:text-white">ADNAN.</div>
         <div class="flex items-center gap-4">
             <div class="relative mr-4">
-                <button id="lang-dropdown-btn"
+                <button id="mobile-lang-dropdown-btn"
                     class="lang-toggle-btn text-xs text-black dark:text-white hover:text-primary transition-colors font-mono font-bold flex items-center gap-1">
                     🇬🇧 EN
                     <span class="text-[8px]">▼</span>
                 </button>
-                <div id="lang-dropdown"
+                <div id="mobile-lang-dropdown"
                     class="hidden absolute top-full right-0 mt-2 bg-white dark:bg-black border border-black dark:border-white shadow-lg z-50 min-w-[120px] max-h-[300px] overflow-y-auto">
                     <button onclick="switchLanguage('en')"
                         class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇬🇧
