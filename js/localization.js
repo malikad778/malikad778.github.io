@@ -273,7 +273,10 @@ function updateLanguageSelector(lang) {
     };
 
     document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
-        btn.innerHTML = `<span class="font-mono font-bold">${langLabels[lang] || lang.toUpperCase()}</span>`;
+        // Only update text content, preserve dropdown arrow
+        const currentLabel = langLabels[lang] || lang.toUpperCase();
+        const arrow = '<span class="text-[8px]">▼</span>';
+        btn.innerHTML = `${currentLabel} ${arrow}`;
     });
 }
 
