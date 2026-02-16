@@ -104,6 +104,7 @@
     <!-- Language Dropdown Toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile header dropdown
             const dropdownBtn = document.getElementById('lang-dropdown-btn');
             const dropdown = document.getElementById('lang-dropdown');
 
@@ -113,13 +114,30 @@
                     dropdown.classList.toggle('hidden');
                 });
 
-                // Close dropdown when clicking outside
                 document.addEventListener('click', function () {
                     dropdown.classList.add('hidden');
                 });
 
-                // Prevent dropdown from closing when clicking inside it
                 dropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // Sidebar dropdown
+            const sidebarDropdownBtn = document.getElementById('sidebar-lang-dropdown-btn');
+            const sidebarDropdown = document.getElementById('sidebar-lang-dropdown');
+
+            if (sidebarDropdownBtn && sidebarDropdown) {
+                sidebarDropdownBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    sidebarDropdown.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', function () {
+                    sidebarDropdown.classList.add('hidden');
+                });
+
+                sidebarDropdown.addEventListener('click', function (e) {
                     e.stopPropagation();
                 });
             }
@@ -165,10 +183,31 @@
             <span class="material-symbols-outlined dark:hidden">dark_mode</span>
             <span class="material-symbols-outlined hidden dark:block">light_mode</span>
         </button>
-        <button onclick="toggleLanguage()"
-            class="mt-4 lang-toggle-btn text-xs text-black dark:text-white hover:text-primary transition-colors font-mono font-bold">
-            DE
-        </button>
+        <div class="relative mt-4">
+            <button id="sidebar-lang-dropdown-btn"
+                class="lang-toggle-btn text-xs text-black dark:text-white hover:text-primary transition-colors font-mono font-bold flex items-center gap-1">
+                🇬🇧 EN
+                <span class="text-[8px]">▼</span>
+            </button>
+            <div id="sidebar-lang-dropdown"
+                class="hidden absolute bottom-full left-0 mb-2 bg-white dark:bg-black border border-black dark:border-white shadow-lg z-50 min-w-[120px] max-h-[300px] overflow-y-auto">
+                <button onclick="switchLanguage('en')"
+                    class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇬🇧
+                    EN</button>
+                <button onclick="switchLanguage('de')"
+                    class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇩🇪
+                    DE</button>
+                <button onclick="switchLanguage('es')"
+                    class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇪🇸
+                    ES</button>
+                <button onclick="switchLanguage('fr')"
+                    class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇫🇷
+                    FR</button>
+                <button onclick="switchLanguage('ur')"
+                    class="block w-full text-left px-3 py-2 text-xs font-mono hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">🇵🇰
+                    UR</button>
+            </div>
+        </div>
     </nav>
     <nav
         class="fixed top-0 w-full flex justify-between items-center px-6 py-4 z-40 md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
