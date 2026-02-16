@@ -100,6 +100,32 @@
             }
         }
     </script>
+
+    <!-- Language Dropdown Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownBtn = document.getElementById('lang-dropdown-btn');
+            const dropdown = document.getElementById('lang-dropdown');
+
+            if (dropdownBtn && dropdown) {
+                dropdownBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function () {
+                    dropdown.classList.add('hidden');
+                });
+
+                // Prevent dropdown from closing when clicking inside it
+                dropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
+
     <style>
         .neo-grid {
             background-size: 40px 40px;
@@ -117,6 +143,7 @@
             scrollbar-width: none;
         }
     </style>
+    <script src="js/localization.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
