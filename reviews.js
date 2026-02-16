@@ -107,5 +107,50 @@ window.reviewsData = [
         "verified": true,
         "date": "2026-02-16",
         "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Amazing freelancer to work with!",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "I was searching for a Laravel/PHP expert to urgently resolve a critical bug, and I found Feroz. He demonstrated exceptional expertise in PHP, particularly with the Laravel framework, and efficiently resolved the issue with professionalism and speed.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Working with Feroz has been amazing, he responds quick and works fast! Can't wait to work with Feroz on new projects! Thank you!",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "I had an amazing experience working with Feroz Younus. Their professionalism and clear communication made the project run smoothly from start to finish. They were supportive and open to ideas, making collaboration truly enjoyable.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Great developer. He done project on time. Recommended.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
     }
 ];
