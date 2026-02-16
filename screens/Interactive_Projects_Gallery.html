@@ -1,0 +1,265 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adnan Portfolio - 2026 Visual Case Studies Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111", 
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0a0a0a",
+                        "text-light": "#111111",
+                        "text-dark": "#EDEDED",
+                        "muted-light": "#F3F3F3",
+                        "muted-dark": "#1F1F1F",
+                        "border-light": "#E5E5E5",
+                        "border-dark": "#262626"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0px", 
+                        'none': '0px',
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            cursor: default;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #333;
+        }.project-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+        .project-info {
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease-out;
+        }
+        .project-card:hover .project-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .project-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }.masonry-grid {
+            column-count: 1;
+            column-gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1280px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans transition-colors duration-300 antialiased overflow-x-hidden min-h-screen flex">
+<nav class="fixed left-0 top-0 h-full w-12 md:w-16 border-r border-border-light dark:border-border-dark flex flex-col justify-between items-center py-8 z-40 bg-background-light dark:bg-background-dark">
+<div class="h-10 w-10 bg-primary text-white flex items-center justify-center font-bold text-xs">
+            A.
+        </div>
+<div class="flex-grow flex flex-col justify-center gap-12 text-[10px] md:text-xs font-mono tracking-widest text-gray-400 dark:text-gray-500 uppercase">
+<a class="vertical-text hover:text-primary dark:hover:text-white transition-colors" href="#">About</a>
+<a class="vertical-text hover:text-primary dark:hover:text-white transition-colors" href="#">Logic</a>
+<a class="vertical-text text-primary dark:text-white font-bold transition-colors" href="#">Work</a>
+</div>
+<div class="text-gray-400 dark:text-gray-500 cursor-pointer hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-icons text-sm">menu</span>
+</div>
+</nav>
+<main class="ml-12 md:ml-16 flex-grow flex flex-col relative">
+<header class="px-6 md:px-12 pt-16 pb-8 md:pt-24 md:pb-12 border-b border-border-light dark:border-border-dark flex flex-col md:flex-row justify-between items-end gap-6 bg-background-light dark:bg-background-dark z-30 sticky top-0 bg-opacity-95 backdrop-blur-sm">
+<div>
+<div class="flex items-center gap-3 text-xs font-mono text-gray-500 dark:text-gray-400 mb-2">
+<span class="inline-block w-2 h-2 bg-primary dark:bg-white rounded-full animate-pulse"></span>
+                    02 // SELECTED WORKS
+                </div>
+<h1 class="text-4xl md:text-6xl font-display font-medium uppercase tracking-tight leading-none text-primary dark:text-white">
+                    Case Studies
+                </h1>
+</div>
+<div class="flex flex-col items-start md:items-end text-[10px] md:text-xs font-mono text-gray-500 dark:text-gray-400 leading-relaxed tracking-wide">
+<div>INDEX: 2023 — 2026</div>
+<div>STATUS: DECLASSIFIED</div>
+<div class="mt-2 text-primary dark:text-white">ADNAN PORTFOLIO v3.0</div>
+</div>
+</header>
+<section class="flex-grow w-full px-6 md:px-12 py-12 bg-gray-50/50 dark:bg-black/20">
+<div class="masonry-grid w-full max-w-[1920px] mx-auto">
+<div class="masonry-item">
+<article class="project-card group relative w-full bg-white dark:bg-muted-dark border border-border-light dark:border-border-dark overflow-hidden cursor-pointer h-[500px] md:h-[600px]">
+<div class="absolute inset-0 bg-gray-100 dark:bg-gray-800">
+<img alt="Fintech Mobile App Interface" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdi_PTVZuq9AmilHvrfGinMlp01rW5Eqkua77smv6EVj3UKtHS7DfiUhgpPvvgAjtPmXZHCKqffQggbzG7x_WSdl9uybdwd2ITVHsURvzkG5sPyVAPvmTy8O1OkqUUcBwK5hnwvRq-b7kE37l6oKGwjd8gD5Ep_z3nrT-gb0GPA_SS6cSDJ7SHRceRrt9mDfujMw3XSczfXtIvpgcV3EIo9S1gLz2IUVyt93fl-iA3Ivl_R8IWTsI9Z2iLWKh5lZob1X1Rrcf9N_Q"/>
+</div>
+<div class="project-overlay absolute inset-0 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+<div class="project-info">
+<div class="flex justify-between items-end border-b border-white/20 pb-4 mb-4">
+<h3 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight">Fintech<br/>Neobank</h3>
+<span class="font-mono text-xs text-white/80 mb-1">01</span>
+</div>
+<div class="flex justify-between items-start text-xs font-mono text-white/90">
+<div class="flex flex-col gap-1">
+<span class="uppercase tracking-wider opacity-60">Stack</span>
+<span>Laravel / Vue.js / Tailwind</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="uppercase tracking-wider opacity-60">Year</span>
+<span>2026</span>
+</div>
+</div>
+<p class="mt-4 text-sm text-gray-300 font-light line-clamp-2 max-w-[90%]">
+                                    A complete digital banking ecosystem redesign focusing on minimalist data visualization and seamless transaction flows.
+                                </p>
+</div>
+</div>
+</article>
+</div>
+<div class="masonry-item">
+<article class="project-card group relative w-full bg-white dark:bg-muted-dark border border-border-light dark:border-border-dark overflow-hidden cursor-pointer h-[300px] md:h-[380px]">
+<div class="absolute inset-0 bg-gray-100 dark:bg-gray-800">
+<img alt="Orbital SaaS Platform Dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXzjgX-QQyqqqQeR2q-CwfJzaR6XU7WWWXvlf3MOdYrwNWv4ODKcnwZpbdRkz0dmr74lGbkZ1WaO4uqFi6BAH239gr1JK7gZWb3NBdTVQBzFqcVKqXI43QTsAG_82epnqe61Du1OV7dlot0YPMzgLP9ZfaBFVpRyfiKvtH8rK9g7qoBYKKU0PlCFkdSVJOO1T7qosdUzTUhEEZ6nDiRrWZHE20-r32pDvPO7XttTFoiHjtehIRtC_pIXrk3FMAdaW7KBR9bItlR84"/>
+</div>
+<div class="project-overlay absolute inset-0 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+<div class="project-info">
+<div class="flex justify-between items-end border-b border-white/20 pb-4 mb-4">
+<h3 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight">Orbital SaaS</h3>
+<span class="font-mono text-xs text-white/80 mb-1">02</span>
+</div>
+<div class="flex justify-between items-start text-xs font-mono text-white/90">
+<div class="flex flex-col gap-1">
+<span class="uppercase tracking-wider opacity-60">Stack</span>
+<span>React / Node.js / AWS</span>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-white text-lg">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<div class="masonry-item">
+<article class="project-card group relative w-full bg-white dark:bg-muted-dark border border-border-light dark:border-border-dark overflow-hidden cursor-pointer h-[400px] md:h-[450px]">
+<div class="absolute inset-0 bg-gray-100 dark:bg-gray-800">
+<img alt="Neural AI Interface" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUg6sMW2ZnwlRXmlgORDqeAXvBu5PSgAysldmJSJ2KLWWD9mvZ2BJQtPTEXklVqLb-NwT8_El0WCcUqXzqySa98LLRxZ4I-sVidqIsY8ZHQJQdqvu63cX2czwAuIUfyQcVu8Od8c0Tj6X3PE7Jp0BaRbhesWRAFsgT4UqTTYzpnGU4Yo95LeHJJjvhcwWZyBCZ3GXz3p9SnC9edeB5zxf-7-YJnkgFOZaJf6CqR20KBR9nkph4t1w2nS04msMYSex0F147S1QeBlo"/>
+</div>
+<div class="project-overlay absolute inset-0 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+<div class="project-info">
+<div class="flex justify-between items-end border-b border-white/20 pb-4 mb-4">
+<h3 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight">Neural AI</h3>
+<span class="font-mono text-xs text-white/80 mb-1">03</span>
+</div>
+<div class="flex justify-between items-start text-xs font-mono text-white/90">
+<div class="flex flex-col gap-1">
+<span class="uppercase tracking-wider opacity-60">Stack</span>
+<span>Python / TensorFlow / WebGL</span>
+</div>
+</div>
+<p class="mt-4 text-sm text-gray-300 font-light line-clamp-2">
+                                    Next-gen interface for interacting with large language models, featuring real-time node visualization.
+                                </p>
+</div>
+</div>
+</article>
+</div>
+<div class="masonry-item">
+<article class="project-card group relative w-full bg-white dark:bg-muted-dark border border-border-light dark:border-border-dark overflow-hidden cursor-pointer h-[550px] md:h-[650px]">
+<div class="absolute inset-0 bg-gray-100 dark:bg-gray-800">
+<img alt="Kinetic Ecommerce Shop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQUbcLuTLAVln6gnkbalCimVAKMdW1pbxq2WM8bt2FLJECEqRduvpCpi22TOQ4838uzawLywIl3xqARvbU-40VaIRHNUhrOBXimb1WEvKSaJIZfRe8MxhkN_RS5PphWxTqP8UQ-GCsbz8whi9-3OVz3h7ipgC_GBjPgfumJwW79hTLR5Tq3P67vRcz2kyMjUqPKtsBKWL5XfGIlcjSjOEHl1BR0YBqV8ZIl4CBjhlsFZ6BA0UvPYS66mKhnHIauCLIBoJYLiBwBZ4"/>
+</div>
+<div class="project-overlay absolute inset-0 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end h-full pointer-events-none">
+<div class="project-info">
+<div class="flex justify-between items-end border-b border-white/20 pb-4 mb-4">
+<h3 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight">Kinetic</h3>
+<span class="font-mono text-xs text-white/80 mb-1">04</span>
+</div>
+<div class="flex justify-between items-start text-xs font-mono text-white/90">
+<div class="flex flex-col gap-1">
+<span class="uppercase tracking-wider opacity-60">Stack</span>
+<span>Shopify Plus / Liquid</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="uppercase tracking-wider opacity-60">Role</span>
+<span>Frontend Lead</span>
+</div>
+</div>
+<p class="mt-4 text-sm text-gray-300 font-light line-clamp-2">
+                                    High-performance headless commerce storefront built for speed and conversion optimization.
+                                </p>
+</div>
+</div>
+</article>
+</div>
+<div class="masonry-item">
+<article class="project-card group relative w-full bg-white dark:bg-muted-dark border border-border-light dark:border-border-dark overflow-hidden cursor-pointer h-[280px] md:h-[350px] flex items-center justify-center">
+<div class="absolute inset-0 bg-gray-50 dark:bg-muted-dark"></div>
+<div class="relative z-10 text-center p-8">
+<div class="w-16 h-16 border border-gray-300 dark:border-gray-700 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">add</span>
+</div>
+<h3 class="text-xl font-display font-medium text-gray-400 dark:text-gray-500 uppercase tracking-tight">Incoming Project</h3>
+<p class="text-xs font-mono text-gray-400 mt-2">Q3 2026</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<footer class="px-6 md:px-12 py-24 flex justify-center items-center bg-background-light dark:bg-background-dark border-t border-border-light dark:border-border-dark">
+<a class="group relative px-10 py-4 border border-gray-900 dark:border-gray-100 overflow-hidden bg-transparent transition-all duration-300 hover:px-12" href="#">
+<span class="relative z-10 text-xs font-mono uppercase font-bold tracking-widest text-gray-900 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
+                    View Archive
+                </span>
+<div class="absolute inset-0 bg-primary dark:bg-white transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-300 ease-out origin-left"></div>
+</a>
+</footer>
+</main>
+
+</body></html>
