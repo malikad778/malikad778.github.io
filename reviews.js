@@ -71,5 +71,41 @@ window.reviewsData = [
         "verified": true,
         "date": "2026-02-16",
         "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Feroz is one of those people who truly love what they do. This is not the first time I've worked with him, and every time he delivers outstanding results. He is dedicated, creative, and always goes the extra mile.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Good work carried out and fixed issue after a couple of attempts. Faroz was very helpful and quick to resolve the issue. Great work and hopefully we will work together again soon.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "Feroz is a highly professional web developer with expertise in custom modifications for WordPress. He completes projects accurately and promptly.",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
+    },
+    {
+        "client": "Verified Client",
+        "role": "Upwork Client",
+        "rating": 5,
+        "text": "I hired Feroz to help with some custom widgets I needed on WordPress. Feroz not only completed the task, but he also created a way for me to add more widgets in the future without needing additional help. Exceptional work!",
+        "verified": true,
+        "date": "2026-02-16",
+        "project": "Development Project"
     }
 ];
