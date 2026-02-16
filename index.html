@@ -1035,8 +1035,8 @@
                         }
 
                         // Check if reviewsData is loaded (from reviews.js)
-                        if (window.fiverrReviewsData && window.fiverrReviewsData.length > 0) {
-                            renderReviews(window.fiverrReviewsData);
+                        if (window.reviewsData && window.reviewsData.length > 0) {
+                            renderReviews(window.reviewsData);
                         } else {
                             console.error('Reviews data not found');
                             carousel.innerHTML = '<div class="p-8 text-red-500 font-mono text-xs">ERROR: DATA CORRUPTED OR MISSING</div>';
