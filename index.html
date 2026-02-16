@@ -4,10 +4,36 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Adnan Portfolio - 2026 Brutalist Light Architecture</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Adnan Portfolio - Senior PHP/Laravel Engineer & UI/UX Architect</title>
+    <meta
+        content="Senior PHP/Laravel Engineer & UI/UX Architect with 6+ years of experience building scalable, high-performance web applications."
+        name="description" />
+    <meta content="failed to load" name="keywords" />
+    <meta content="Adnan" name="author" />
+    <meta content="#000000" name="theme-color" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adnan-portfolio.com/" />
+    <meta property="og:title" content="Adnan Portfolio - Senior PHP/Laravel Engineer" />
+    <meta property="og:description"
+        content="Senior PHP/Laravel Engineer & UI/UX Architect building scalable, high-performance web applications." />
+    <meta property="og:image" content="php_dev.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://adnan-portfolio.com/" />
+    <meta property="twitter:title" content="Adnan Portfolio - Senior PHP/Laravel Engineer" />
+    <meta property="twitter:description"
+        content="Senior PHP/Laravel Engineer & UI/UX Architect building scalable, high-performance web applications." />
+    <meta property="twitter:image" content="php_dev.png" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+
+    <!-- New Fonts for Bento Grid -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;300;400;700;900&display=swap"
+        rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&amp;display=swap" rel="stylesheet" />
@@ -20,17 +46,18 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         "primary": "#12446B", // Ocean Blue
+
                         "secondary": "#F0F0F0",
                         "background-light": "#FFFFFF",
                         "background-dark": "#FFFFFF", // Override for light theme consistency
                         "obsidian": "#FAFAFA", // Very light gray for subtle contrast
                         "text-main": "#000000",
                         "text-muted": "#666666",
-                        "grid-line": "#E5E5E5",
                         "grid-line": "#E5E5E5",
                         "navy": {
                             800: "#071e30",
@@ -43,9 +70,9 @@
                         "display": ["Space Grotesk", "sans-serif"],
                         "oswald": ["Oswald", "sans-serif"],
                         "mono": ["Space Grotesk", "monospace"],
-                        "mono": ["Space Grotesk", "monospace"],
                         "sans": ["Inter", "sans-serif"],
                         "manrope": ["Manrope", "sans-serif"],
+                        "public": ["Public Sans", "sans-serif"], // NEW for Bento Grid
                     },
                     borderRadius: { "DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px" }, // Sharper edges for architectural feel
                     backgroundImage: {
@@ -55,29 +82,88 @@
             },
         }
     </script>
+    <script>
+        // Dark Mode Check
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+    <style>
+        .neo-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(236, 91, 19, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(236, 91, 19, 0.05) 1px, transparent 1px);
+        }
+
+        /* Hide Scrollbar */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body
-    class="bg-white text-black font-display transition-colors duration-300 relative overflow-x-hidden selection:bg-black selection:text-white">
+    class="bg-white dark:bg-black text-black dark:text-white font-display transition-colors duration-300 relative selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
     <nav
-        class="fixed top-0 left-0 h-full w-20 flex flex-col justify-between items-center py-12 z-40 border-r border-gray-200 hidden md:flex bg-white/90 backdrop-blur-sm">
-        <div class="text-2xl font-bold tracking-tighter text-black">AD.</div>
+        class="fixed top-0 left-0 h-full w-20 flex flex-col justify-between items-center py-12 z-40 border-r border-gray-200 dark:border-white/10 hidden md:flex bg-white/90 dark:bg-black/90 backdrop-blur-sm transition-colors duration-300">
+        <div class="text-2xl font-bold tracking-tighter text-black dark:text-white">AD.</div>
         <div class="flex flex-col gap-12 text-xs tracking-[0.2em] text-gray-400 font-medium">
-            <a class="text-vertical hover:text-black transition-colors" href="#work">WORK</a>
-            <a class="text-vertical hover:text-black transition-colors" href="#logic">LOGIC</a>
-            <a class="text-vertical hover:text-black transition-colors" href="#about">ABOUT</a>
+            <a id="nav-work" class="text-vertical hover:text-black dark:hover:text-white transition-colors"
+                href="#work">WORK</a>
+            <a id="nav-about" class="text-vertical hover:text-black dark:hover:text-white transition-colors"
+                href="#about">ABOUT</a>
+            <a id="nav-contact" class="text-vertical hover:text-black dark:hover:text-white transition-colors"
+                href="#contact">CONTACT</a>
         </div>
         <div class="text-xs text-gray-400 font-mono rotate-180 text-vertical">EST. 2026</div>
+        <button onclick="toggleTheme()" class="mt-8 text-black dark:text-white hover:text-primary transition-colors">
+            <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+            <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+        </button>
+        <button onclick="toggleLanguage()"
+            class="mt-4 lang-toggle-btn text-xs text-black dark:text-white hover:text-primary transition-colors font-mono font-bold">
+            DE
+        </button>
     </nav>
     <nav
-        class="fixed top-0 w-full flex justify-between items-center px-6 py-4 z-40 md:hidden bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="text-xl font-bold text-black">ADNAN.</div>
-        <button class="text-black"><span class="material-icons">menu</span></button>
+        class="fixed top-0 w-full flex justify-between items-center px-6 py-4 z-40 md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+        <div class="text-xl font-bold text-black dark:text-white">ADNAN.</div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleLanguage()"
+                class="lang-toggle-btn text-xs text-black dark:text-white hover:text-primary transition-colors font-mono font-bold mr-4">
+                DE
+            </button>
+            <button onclick="toggleTheme()" class="text-black dark:text-white">
+                <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                <span class="material-symbols-outlined hidden dark:block">light_mode</span>
+            </button>
+            <button class="text-black dark:text-white"><span class="material-icons">menu</span></button>
+        </div>
     </nav>
-    <main class="md:pl-20 relative bg-white architectural-grid">
-        <section class="flex flex-col lg:flex-row relative border-b border-gray-200 bg-arch-white min-h-screen">
-            <div class="absolute inset-0 pointer-events-none z-0 opacity-40 bg-grid-pattern arch-grid-bg"></div>
+    <main class="md:pl-20 relative bg-white dark:bg-black architectural-grid transition-colors duration-300">
+        <section
+            class="flex flex-col lg:flex-row relative border-b border-gray-200 dark:border-white/10 bg-arch-white dark:bg-black min-h-screen transition-colors duration-300">
+            <div
+                class="absolute inset-0 pointer-events-none z-0 opacity-40 bg-grid-pattern arch-grid-bg dark:opacity-10">
+            </div>
 
             <div class="flex-grow flex items-center justify-center py-24 px-4 md:px-8 relative z-10 w-full">
                 <div class="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:h-[750px]">
@@ -121,35 +207,57 @@
                             </div>
 
                             <h1
-                                class="font-oswald font-bold text-[7rem] md:text-[10rem] lg:text-[11rem] monolithic-text text-black mb-8 select-none relative z-10">
+                                class="font-oswald font-bold text-[7rem] md:text-[10rem] lg:text-[11rem] monolithic-text text-black dark:text-white mb-8 select-none relative z-10">
                                 ADNAN
                             </h1>
                             <div
-                                class="flex flex-col md:flex-row md:items-center gap-8 border-l-2 border-black pl-6 mb-12 relative z-10">
-                                <p
-                                    class="text-xl md:text-2xl font-sans font-light text-gray-800 max-w-md leading-tight">
+                                class="flex flex-col md:flex-row md:items-center gap-8 border-l-2 border-black dark:border-white pl-6 mb-12 relative z-10">
+                                <p id="hero-role"
+                                    class="text-xl md:text-2xl font-sans font-light text-gray-800 dark:text-gray-200 max-w-md leading-tight">
                                     Senior PHP/Laravel Engineer &amp; <br />
-                                    <span class="font-semibold">UI/UX Architect.</span>
+                                    <span class="font-semibold text-black dark:text-white">UI/UX Architect.</span>
                                 </p>
                             </div>
-                            <button
-                                class="bg-navy-900 hover:bg-black text-white px-8 py-4 text-xs font-mono font-bold tracking-widest uppercase transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center gap-4 group w-fit relative z-10">
-                                Initiate Project
-                                <span
-                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                            </button>
+                            <div class="relative z-10 w-full max-w-lg flex flex-col gap-4 sm:pb-0">
+                                <!-- TERMINAL CONTACT REPLACEMENT -->
+                                <div id="terminal-contact" class="w-full"></div>
+
+                                <div class="flex justify-end w-full">
+                                    <a href="assets/resume.pdf" target="_blank" id="cv-download"
+                                        class="bg-transparent border border-black dark:border-white text-black dark:text-white px-6 py-3 text-[10px] font-mono font-bold tracking-widest uppercase transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center gap-3 group w-fit box-border">
+                                        Download CV
+                                        <span
+                                            class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">download</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div
-                            class="absolute bottom-0 left-4 lg:left-12 border border-gray-200 p-4 bg-white/50 backdrop-blur-sm">
+                            class="absolute bottom-0 left-4 lg:left-12 border border-gray-200 dark:border-white/10 p-4 bg-white/50 dark:bg-black/50 backdrop-blur-sm min-w-[200px]">
                             <div class="flex items-center gap-3 mb-2">
-                                <span
+                                <span id="system-status-indicator"
                                     class="material-symbols-outlined text-[10px] text-green-600 animate-pulse">radio_button_checked</span>
-                                <span class="font-mono text-[10px] uppercase tracking-widest text-gray-500">System
+                                <span id="system-status-text"
+                                    class="font-mono text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400">System
                                     Status: Optimal</span>
                             </div>
-                            <div class="font-mono text-[10px] text-gray-400 tracking-wider">
-                                &gt; Logic Core: Active<br />
-                                &gt; Rendering: 60fps
+                            <div class="font-mono text-[10px] text-gray-400 tracking-wider space-y-1">
+                                <div class="flex justify-between">
+                                    <span>> FPS:</span>
+                                    <span id="system-fps" class="text-gray-600 dark:text-gray-300">--</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>> PING:</span>
+                                    <span id="system-ping" class="text-gray-600 dark:text-gray-300">--</span>
+                                </div>
+                                <span>> UPTIME:</span>
+                                <span id="system-uptime" class="text-gray-600 dark:text-gray-300">00:00:00</span>
+                            </div>
+                            <div class="pt-2 mt-2 border-t border-gray-200 dark:border-white/10">
+                                <button id="audio-mute-toggle"
+                                    class="hover:text-black dark:hover:text-white transition-colors uppercase tracking-widest text-[9px] text-left w-full">
+                                    SOUND: <span class="text-green-500">ON</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -184,7 +292,7 @@
                                     <div class="flex flex-col gap-1">
                                         <span
                                             class="font-mono text-[10px] text-white/60 uppercase tracking-widest">Portfolio</span>
-                                        <span class="font-oswald text-4xl text-white font-bold">250<span
+                                        <span class="font-oswald text-4xl text-white font-bold">450<span
                                                 class="text-ocean-glow">+</span></span>
                                         <span class="font-sans text-xs text-white/80 font-light">Projects Shipped</span>
                                     </div>
@@ -214,99 +322,108 @@
 
             <div
                 class="fixed right-8 bottom-12 hidden lg:flex flex-col items-center gap-4 z-50 mix-blend-difference text-gray-500">
-                <span
-                    class="font-mono text-[10px] tracking-widest uppercase rotate-90 origin-right translate-x-2 w-max">Scroll
-                    to Decrypt</span>
+
                 <div class="w-[1px] h-12 bg-gray-400"></div>
             </div>
         </section>
-        <section class="relative py-32 px-6 lg:px-24 border-b border-gray-200 bg-white" id="logic">
-            <div class="absolute left-8 lg:left-24 top-0 bottom-0 w-px bg-gray-200 hidden lg:block"></div>
+        <section
+            class="py-32 px-6 lg:px-24 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-black transition-colors duration-300"
+            id="about-section">
+            <div class="absolute left-8 lg:left-24 top-0 bottom-0 w-px bg-gray-200 dark:bg-white/10 hidden lg:block">
+            </div>
 
             <!-- Standard Header -->
-            <div class="mb-20 flex items-end justify-between border-b border-black pb-4 relative z-10 pl-0 lg:pl-12">
+            <div
+                class="mb-20 flex items-end justify-between border-b border-black dark:border-white pb-4 relative z-10 pl-0 lg:pl-12">
                 <div>
-                    <span class="text-black font-mono text-xs mb-2 block">01 // THE LOGIC</span>
-                    <h2 class="text-5xl text-black font-bold tracking-tighter">INFRASTRUCTURE</h2>
+                    <span class="text-black dark:text-white font-mono text-xs mb-2 block">01 // ABOUT</span>
+                    <h2 id="about-heading" class="text-5xl text-black dark:text-white font-bold tracking-tighter">SENIOR
+                        PHP DEVELOPER</h2>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative z-10">
                 <div class="lg:col-span-5 lg:pl-12">
-                    <h3 class="text-4xl text-black font-medium mb-8 leading-tight tracking-tight">
-                        Constructing the digital infrastructure of tomorrow.
+                    <h3 class="text-3xl text-black dark:text-white font-medium mb-8 leading-tight tracking-tight">
+                        Transforming business challenges into powerful web solutions.
                     </h3>
-                    <p class="text-gray-500 leading-relaxed mb-8 font-light text-lg">
-                        I bridge the gap between raw computational power and human-centric design. Specializing in
-                        high-performance Laravel backends wrapped in minimalist, functional interfaces. My code
-                        structure mirrors modern architectural principles: clean, robust, and enduring.
+                    <p id="about-text-1"
+                        class="text-gray-500 dark:text-gray-400 leading-relaxed mb-6 font-light text-lg">
+                        I'm a professional PHP web developer specializing in Laravel, custom web applications, and
+                        database-driven solutions. With over 5 years of experience, I don't just write code; I solve
+                        real business problems.
                     </p>
-                    <div class="flex gap-12 mt-12 border-t border-gray-100 pt-8">
+                    <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-8 font-light text-lg">
+                        Whether you need a custom web application, API integration, or a scalable E-commerce platform, I
+                        deliver robust solutions that perform.
+                    </p>
+                    <div class="flex gap-12 mt-12 border-t border-gray-100 dark:border-white/10 pt-8">
                         <div class="flex flex-col">
-                            <span class="text-4xl text-black font-light">8+</span>
+                            <span class="text-4xl text-black dark:text-white font-light">5+</span>
                             <span class="text-[10px] text-gray-400 uppercase tracking-widest mt-2 font-mono">Years
                                 Exp</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-4xl text-black font-light">140+</span>
-                            <span class="text-[10px] text-gray-400 uppercase tracking-widest mt-2 font-mono">Systems
-                                Deployed</span>
+                            <span class="text-4xl text-black dark:text-white font-light">450+</span>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-widest mt-2 font-mono">Projects
+                                Delivered</span>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7 flex flex-col justify-center space-y-0">
-                    <span class="text-gray-400 font-mono text-xs mb-6 block lg:hidden">02 // STACK</span>
+                    <span class="text-gray-400 font-mono text-xs mb-6 block lg:hidden">02 // EXPERTISE</span>
                     <div
-                        class="group relative flex items-center justify-between border-b border-gray-200 py-8 cursor-pointer hover:bg-gray-50 transition-colors px-4 -mx-4">
+                        class="group relative flex items-center justify-between border-b border-gray-200 dark:border-white/10 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4">
                         <h4
-                            class="text-3xl lg:text-5xl text-gray-300 font-light group-hover:text-black group-hover:translate-x-4 transition-all duration-500">
-                            PHP 8.x / LARAVEL</h4>
+                            class="text-3xl lg:text-5xl text-gray-300 dark:text-gray-500 font-light group-hover:text-black dark:group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                            LARAVEL / PHP 8.X</h4>
                         <span
-                            class="material-icons text-black opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
+                            class="material-icons text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
                     </div>
                     <div
-                        class="group relative flex items-center justify-between border-b border-gray-200 py-8 cursor-pointer hover:bg-gray-50 transition-colors px-4 -mx-4">
+                        class="group relative flex items-center justify-between border-b border-gray-200 dark:border-white/10 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4">
                         <h4
-                            class="text-3xl lg:text-5xl text-gray-300 font-light group-hover:text-black group-hover:translate-x-4 transition-all duration-500">
-                            VUE / ALPINE.JS</h4>
+                            class="text-3xl lg:text-5xl text-gray-300 dark:text-gray-500 font-light group-hover:text-black dark:group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                            WOOCOMMERCE / CMS</h4>
                         <span
-                            class="material-icons text-black opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
+                            class="material-icons text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
                     </div>
                     <div
-                        class="group relative flex items-center justify-between border-b border-gray-200 py-8 cursor-pointer hover:bg-gray-50 transition-colors px-4 -mx-4">
+                        class="group relative flex items-center justify-between border-b border-gray-200 dark:border-white/10 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4">
                         <h4
-                            class="text-3xl lg:text-5xl text-gray-300 font-light group-hover:text-black group-hover:translate-x-4 transition-all duration-500">
-                            AWS / DOCKER</h4>
+                            class="text-3xl lg:text-5xl text-gray-300 dark:text-gray-500 font-light group-hover:text-black dark:group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                            API / DATABASE</h4>
                         <span
-                            class="material-icons text-black opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
+                            class="material-icons text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
                     </div>
                     <div
-                        class="group relative flex items-center justify-between border-b border-gray-200 py-8 cursor-pointer hover:bg-gray-50 transition-colors px-4 -mx-4">
+                        class="group relative flex items-center justify-between border-b border-gray-200 dark:border-white/10 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4">
                         <h4
-                            class="text-3xl lg:text-5xl text-gray-300 font-light group-hover:text-black group-hover:translate-x-4 transition-all duration-500">
-                            UI ARCHITECTURE</h4>
+                            class="text-3xl lg:text-5xl text-gray-300 dark:text-gray-500 font-light group-hover:text-black dark:group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                            CUSTOM WEB APPS</h4>
                         <span
-                            class="material-icons text-black opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
+                            class="material-icons text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity transform -rotate-45">arrow_forward</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CORE STACK MARQUEE -->
-        <section class="py-12 border-b border-gray-200 bg-white overflow-hidden" id="core-stack">
+        <section
+            class="py-12 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-black overflow-hidden transition-colors duration-300"
+            id="core-stack">
             <div class="relative w-full">
                 <div
-                    class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
+                    class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none">
                 </div>
                 <div
-                    class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
+                    class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none">
                 </div>
 
                 <div class="ticker-wrap">
                     <div class="ticker">
                         <!-- First Set -->
                         <div
-                            class="ticker-item font-display font-bold text-4xl md:text-6xl text-gray-200 select-none hover:text-black transition-colors duration-300">
+                            class="ticker-item font-display font-bold text-4xl md:text-6xl text-gray-200 dark:text-white/20 select-none hover:text-black dark:hover:text-white transition-colors duration-300">
                             DOCKER</div>
                         <div
                             class="ticker-item font-display font-bold text-4xl md:text-6xl text-gray-200 select-none hover:text-black transition-colors duration-300">
@@ -354,26 +471,27 @@
             </div>
         </section>
 
-        <section class="py-20 bg-white relative overflow-hidden" id="work">
-            <div class="px-6 lg:px-24 mb-10 flex items-end justify-between border-b border-black pb-4 relative z-50">
+        <section class="py-20 bg-white dark:bg-black relative overflow-hidden transition-colors duration-300" id="work">
+            <div
+                class="px-6 lg:px-24 mb-10 flex items-end justify-between border-b border-black dark:border-white pb-4 relative z-50">
                 <div>
-                    <span class="text-black font-mono text-xs mb-2 block">02 // SELECTED WORKS</span>
-                    <h2 class="text-5xl text-black font-bold tracking-tighter">INFINITE AXIS</h2>
+                    <span class="text-black dark:text-white font-mono text-xs mb-2 block">02 // SELECTED WORKS</span>
+                    <h2 class="text-5xl text-black dark:text-white font-bold tracking-tighter">INFINITE AXIS</h2>
                 </div>
-                <div class="hidden md:block text-right text-black font-mono text-xs">
-                    INDEX: 2026<br />
+                <div class="hidden md:block text-right text-black dark:text-white font-mono text-xs">
+                    INDEX: <span id="system-index-year">2026</span><br />
                     STATUS: CLASSIFIED
                 </div>
             </div>
 
             <!-- Stitch Header -->
             <header
-                class="relative left-0 right-0 h-20 border-b border-black/10 dark:border-white/10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-40 flex justify-between items-center px-8 md:px-12">
+                class="relative left-0 right-0 h-20 border-b border-black/10 dark:border-white/10 bg-background-light/90 dark:bg-black/90 dark:backdrop-blur-md backdrop-blur-md z-40 flex justify-between items-center px-8 md:px-12">
                 <div class="flex items-center gap-4">
-                    <h1 class="font-display text-xl uppercase font-bold tracking-tight">Infinite Axis <span
-                            class="text-gray-400 font-light mx-2">//</span> Case Studies</h1>
+                    <h1 class="font-display text-xl uppercase font-bold tracking-tight text-black dark:text-white">
+                        Infinite Axis <span class="text-gray-400 font-light mx-2">//</span> Case Studies</h1>
                     <div
-                        class="hidden md:flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-[10px] font-mono uppercase tracking-widest">
+                        class="hidden md:flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-black text-[10px] font-mono uppercase tracking-widest text-black dark:text-white border border-gray-200 dark:border-white/10">
                         <span class="w-1.5 h-1.5 bg-green-500 animate-pulse"></span>
                         System Active
                     </div>
@@ -382,476 +500,525 @@
                     <div class="hidden md:block text-right">
                         <div class="text-gray-400 dark:text-gray-500 text-[9px] uppercase tracking-widest">Coordinates
                         </div>
-                        <div>X: 402.12 / Y: 899.01</div>
+                        <div id="system-coordinates" class="text-black dark:text-white">X: 000.00 / Y: 000.00</div>
                     </div>
                     <div class="hidden md:block text-right">
                         <div class="text-gray-400 dark:text-gray-500 text-[9px] uppercase tracking-widest">Scroll
                             Velocity</div>
-                        <div>0.0 m/s</div>
+                        <div id="system-velocity" class="text-black dark:text-white">0.0 px/s</div>
                     </div>
                     <div class="text-right">
                         <div class="text-gray-400 dark:text-gray-500 text-[9px] uppercase tracking-widest">Year</div>
-                        <div>2026</div>
+                        <div id="system-year" class="text-black dark:text-white">2026</div>
                     </div>
                 </div>
             </header>
 
             <!-- Stitch Main Content -->
-            <div class="relative z-10 w-full min-h-[150vh] overflow-hidden">
-                <div
-                    class="absolute top-24 left-20 text-[9px] font-mono text-gray-300 dark:text-gray-700 pointer-events-none">
-                    001</div>
-                <div
-                    class="absolute top-24 right-12 text-[9px] font-mono text-gray-300 dark:text-gray-700 pointer-events-none">
-                    008</div>
-                <div
-                    class="absolute bottom-12 left-20 text-[9px] font-mono text-gray-300 dark:text-gray-700 pointer-events-none">
-                    X-AXIS</div>
-                <div class="max-w-[1800px] mx-auto px-6 py-20 relative">
-                    <div
-                        class="relative w-full mb-32 group project-card shift-x-positive transition-transform duration-700 ease-out">
-                        <div class="absolute -top-12 left-0 w-[1px] h-12 bg-black/20 dark:bg-white/20"></div>
-                        <div class="absolute top-0 -left-12 h-[1px] w-12 bg-black/20 dark:bg-white/20"></div>
-                        <div
-                            class="relative h-[50vh] w-[95%] border border-black dark:border-white bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                            <img alt="Fintech Neobank Interface showing data visualization"
-                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdi_PTVZuq9AmilHvrfGinMlp01rW5Eqkua77smv6EVj3UKtHS7DfiUhgpPvvgAjtPmXZHCKqffQggbzG7x_WSdl9uybdwd2ITVHsURvzkG5sPyVAPvmTy8O1OkqUUcBwK5hnwvRq-b7kE37l6oKGwjd8gD5Ep_z3nrT-gb0GPA_SS6cSDJ7SHRceRrt9mDfujMw3XSczfXtIvpgcV3EIo9S1gLz2IUVyt93fl-iA3Ivl_R8IWTsI9Z2iLWKh5lZob1X1Rrcf9N_Q" />
-                            <div class="absolute inset-0 blueprint-overlay flex items-center justify-center">
-                                <div
-                                    class="border border-black dark:border-white bg-white/90 dark:bg-black/90 p-8 w-[400px] shadow-2xl backdrop-blur-md text-black dark:text-white">
-                                    <div
-                                        class="flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-4 mb-4">
-                                        <h2 class="text-3xl font-display font-bold uppercase">Fintech Neo</h2>
-                                        <span class="font-mono text-xs">NO. 01</span>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-4 text-xs font-mono mb-6">
-                                        <div>
-                                            <div class="blueprint-label">Architecture</div>
-                                            <div class="mt-1">Laravel 11 / Vue 4</div>
-                                        </div>
-                                        <div>
-                                            <div class="blueprint-label">Latency</div>
-                                            <div class="mt-1 text-green-600 dark:text-green-400">&lt; 14ms</div>
-                                        </div>
-                                        <div class="col-span-2">
-                                            <div class="blueprint-label">Concept</div>
-                                            <div class="mt-1 leading-relaxed">
-                                                Modular banking infrastructure with real-time WebSocket data streams.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-8 right-[5%] flex items-center gap-4">
-                            <span class="h-[1px] w-12 bg-black dark:bg-white"></span>
-                            <span class="font-mono text-xs uppercase tracking-widest">Fintech Neobank</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row gap-24 items-start mb-40 pl-[5%]">
-                        <div class="relative w-full md:w-1/3 mt-20 group project-card">
-                            <div class="absolute -top-8 right-0 w-[1px] h-8 bg-black/20 dark:bg-white/20"></div>
-                            <div
-                                class="relative h-[80vh] border border-black dark:border-white bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                                <img alt="Orbital SaaS Vertical Dashboard"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXzjgX-QQyqqqQeR2q-CwfJzaR6XU7WWWXvlf3MOdYrwNWv4ODKcnwZpbdRkz0dmr74lGbkZ1WaO4uqFi6BAH239gr1JK7gZWb3NBnTVQBzFqcVKqXI43QTsAG_82epnqe61Du1OV7dlot0YPMzgLP9ZfaBFVpRyfiKvtH8rK9g7qoBYKKU0PlCFkdSVJOO1T7qosdUzTUhEEZ6nDiRrWZHE20-r32pDvPO7XttTFoiHjtehIRtC_pIXrk3FMAdaW7KBR9bItlR84" />
-                                <div class="absolute inset-0 blueprint-overlay flex items-center justify-center">
-                                    <div
-                                        class="border border-black dark:border-white bg-white/90 dark:bg-black/90 p-6 w-[80%] shadow-2xl backdrop-blur-md">
-                                        <div
-                                            class="flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-3 mb-3">
-                                            <h2 class="text-xl font-display font-bold uppercase">Orbital SaaS</h2>
-                                            <span class="font-mono text-[10px]">NO. 02</span>
-                                        </div>
-                                        <div class="grid grid-cols-1 gap-3 text-[10px] font-mono mb-4">
-                                            <div>
-                                                <div class="blueprint-label">Stack</div>
-                                                <div>React / Node / AWS</div>
-                                            </div>
-                                            <div>
-                                                <div class="blueprint-label">Focus</div>
-                                                <div>Vertical Scaling UI</div>
-                                            </div>
-                                        </div>
-                                        <div class="flex justify-end">
-                                            <span class="material-symbols-outlined text-sm">open_in_new</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute -left-8 top-1/2 -rotate-90 origin-right flex items-center gap-4">
-                                <span class="font-mono text-xs uppercase tracking-widest">Orbital SaaS</span>
-                                <span class="h-[1px] w-8 bg-black dark:bg-white"></span>
-                            </div>
-                        </div>
-                        <div class="relative w-full md:w-1/2 group project-card shift-x-negative">
-                            <div class="absolute -left-12 top-20 h-[1px] w-12 bg-black/20 dark:bg-white/20"></div>
-                            <div
-                                class="relative h-[50vh] border border-black dark:border-white bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                                <img alt="Neural AI Network Visualization"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUg6sMW2ZnwlRXmlgORDqeAXvBu5PSgAysldmJSJ2KLWWD9mvZ2BJQtPTEXklVqLb-NwT8_El0WCcUqXzqySa98LLRxZ4I-sVidqIsY8ZHQJQdqvu63cX2czwAuIUfyQcVu8Od8c0Tj6X3PE7Jp0BaRbhesWRAFsgT4UqTTYzpnGU4Yo95LeHJJjvhcwWZyBCZ3GXz3p9SnC9edeB5zxf-7-YJnkgFOZaJf6CqR20KBR9nkph4t1w2nS04msMYSex0F147S1QeBlo" />
-                                <div class="absolute inset-0 blueprint-overlay flex items-center justify-center">
-                                    <div
-                                        class="border border-black dark:border-white bg-white/90 dark:bg-black/90 p-8 w-[380px] shadow-2xl backdrop-blur-md relative overflow-hidden">
-                                        <div
-                                            class="absolute top-0 left-0 w-2 h-2 border-t border-l border-black dark:border-white">
-                                        </div>
-                                        <div
-                                            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-black dark:border-white">
-                                        </div>
-                                        <div
-                                            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black dark:border-white">
-                                        </div>
-                                        <div
-                                            class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-black dark:border-white">
-                                        </div>
-                                        <div class="flex justify-between items-center mb-6">
-                                            <h2 class="text-2xl font-display font-bold uppercase">Neural AI</h2>
-                                            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                                        </div>
-                                        <p
-                                            class="font-mono text-xs mb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
-                                            /SYS/VISUALIZATION<br />
-                                            Python-driven TensorFlow nodes mapped to WebGL canvas for real-time
-                                            interaction.
-                                        </p>
-                                        <div class="flex gap-2 font-mono text-[10px] uppercase">
-                                            <span class="border border-black dark:border-white px-2 py-1">Python</span>
-                                            <span class="border border-black dark:border-white px-2 py-1">WebGL</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute -top-8 left-0 flex items-center gap-4">
-                                <span class="font-mono text-xs uppercase tracking-widest">Neural Network</span>
-                                <span class="h-[1px] w-12 bg-black dark:bg-white"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative w-full ml-[5%] w-[90%] mb-24 group project-card">
-                        <div class="absolute bottom-0 -right-24 h-[1px] w-24 bg-black/20 dark:bg-white/20"></div>
-                        <div
-                            class="relative h-[60vh] border border-black dark:border-white bg-gray-100 dark:bg-gray-800 overflow-hidden">
-                            <img alt="Kinetic Shop Interface"
-                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQUbcLuTLAVln6gnkbalCimVAKMdW1pbxq2WM8bt2FLJECEqRduvpCpi22TOQ4838uzawLywIl3xqARvbU-40VaIRHNUhrOBXimb1WEvKSaJIZfRe8MxhkN_RS5PphWxTqP8UQ-GCsbz8whi9-3OVz3h7ipgC_GBjPgfumJwW79hTLR5Tq3P67vRcz2kyMjUqPKtsBKWL5XfGIlcjSjOEHl1BR0YBqV8ZIl4CBjhlsFZ6BA0UvPYS66mKhnHIauCLIBoJYLiBwBZ4" />
-                            <div class="absolute inset-0 blueprint-overlay flex items-center justify-center">
-                                <div
-                                    class="border border-black dark:border-white bg-white/90 dark:bg-black/90 p-10 w-[500px] shadow-2xl backdrop-blur-md text-black dark:text-white">
-                                    <div class="flex items-center gap-4 mb-8">
-                                        <span
-                                            class="text-4xl font-display font-bold uppercase tracking-tighter">Kinetic</span>
-                                        <span class="h-[1px] flex-grow bg-black dark:bg-white"></span>
-                                        <span class="font-mono text-xs">v2.4.0</span>
-                                    </div>
-                                    <div
-                                        class="grid grid-cols-3 gap-8 text-xs font-mono border-b border-black/10 dark:border-white/10 pb-8 mb-6">
-                                        <div>
-                                            <div class="blueprint-label mb-2">Platform</div>
-                                            <div>Shopify Plus</div>
-                                        </div>
-                                        <div>
-                                            <div class="blueprint-label mb-2">Front</div>
-                                            <div>Liquid / JS</div>
-                                        </div>
-                                        <div>
-                                            <div class="blueprint-label mb-2">Performance</div>
-                                            <div>99/100</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-[10px] font-mono text-gray-500 uppercase">Headless
-                                            Architecture</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute top-1/2 -right-12 -rotate-90 origin-right flex items-center gap-4">
-                            <span class="font-mono text-xs uppercase tracking-widest">Kinetic Commerce</span>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute top-[40%] right-[10%] w-32 h-32 border border-dashed border-black/20 dark:border-white/20 pointer-events-none flex items-center justify-center">
-                        <div class="w-1 h-1 bg-black dark:bg-white"></div>
-                    </div>
-                    <div
-                        class="absolute bottom-[20%] left-[15%] text-[10px] font-mono text-gray-400 dark:text-gray-600 vertical-text pointer-events-none">
-                        SHIFT_PARALLAX_ENABLED: TRUE
+            <!-- Hero Section -->
+            <section class="px-6 lg:px-12 pt-12 pb-8 max-w-[1600px] mx-auto w-full">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 ">
+
+                    <!-- Lightbox Explanation -->
+                    <div class="hidden md:flex items-center gap-2">
+                        <span class="material-symbols-outlined text-gray-400 text-sm">zoom_in</span>
+                        <span class="text-[9px] font-mono tracking-widest text-gray-400 uppercase">Click image to
+                            expand</span>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="py-32 px-6 lg:px-24 border-b border-gray-200 bg-white" id="expertise">
-            <div class="mb-20 flex items-end justify-between border-b border-black pb-4">
-                <div>
-                    <span class="text-black font-mono text-xs mb-2 block">03 // CAPABILITIES</span>
-                    <h2 class="text-5xl text-black font-bold tracking-tighter">EXPERTISE</h2>
+            </section>
+
+            <!-- Bento Grid Section -->
+            <section class="px-6 lg:px-12 pb-20 max-w-[1600px] mx-auto w-full">
+                <!-- Grid Container -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 gap-0 border border-gray-200 dark:border-white/10 overflow-hidden font-public">
+
+                    <!-- Featured Project (Project 1: Kozaris) -->
+                    <!-- Added md:row-span-2 to allow right-side stacking -->
+                    <div class="md:col-span-8 md:row-span-2 group relative border-b md:border-b-0 md:border-r border-gray-200 dark:border-white/10 h-[500px] overflow-hidden cursor-zoom-in"
+                        onclick="openLightbox('screenshots/goldschmiede_kozaris_luxury_redesign_14120085362520845215.png')">
+                        <div class="absolute inset-0 bg-cover bg-top grayscale group-hover:grayscale-0 transition-all duration-700"
+                            style="background-image: url('screenshots/goldschmiede_kozaris_luxury_redesign_14120085362520845215.png');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-primary text-white text-[9px] font-bold tracking-widest uppercase">Featured</span>
+                                <span
+                                    class="px-3 py-1 bg-white/10 backdrop-blur-md text-white text-[9px] font-bold tracking-widest uppercase">E-Commerce</span>
+                            </div>
+                            <div>
+                                <h3 class="text-white text-4xl font-black tracking-tighter uppercase">Goldschmiede
+                                    Kozaris</h3>
+                                <p class="text-white/60 text-xs font-light tracking-widest uppercase mt-2">Luxury
+                                    Jewelry Commerce Experience</p>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-4 border-t border-white/10">
+                                <span
+                                    class="text-white/40 text-[9px] font-bold tracking-widest uppercase">Next.js</span>
+                                <span class="text-white/40 text-[9px] font-bold tracking-widest uppercase">Shopify
+                                    Plus</span>
+                                <span class="text-white/40 text-[9px] font-bold tracking-widest uppercase">GSAP</span>
+                                <span class="text-white/40 text-[9px] font-bold tracking-widest uppercase">Redis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 (Top Right: Haber Glasbau) -->
+                    <div class="md:col-span-4 group relative border-b border-gray-200 h-[250px] overflow-hidden cursor-zoom-in"
+                        onclick="openLightbox('screenshots/haber_glasbau_modern.png')">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
+                            style="background-image: url('screenshots/haber_glasbau_modern.png');"></div>
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors"></div>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <span class="text-primary text-[9px] font-black tracking-widest uppercase">02</span>
+
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xl font-black tracking-tighter uppercase">Haber Glasbau</h4>
+                                <div class="flex gap-3 mt-2">
+                                    <span
+                                        class="text-white/40 text-[8px] font-bold tracking-widest uppercase">React</span>
+                                    <span
+                                        class="text-white/40 text-[8px] font-bold tracking-widest uppercase">AWS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 (Bottom Right: Seng) -->
+                    <!-- Currently placed AFTER Haber, so it should stack below it because Kozaris is row-span-2 -->
+                    <div class="md:col-span-4 group relative border-b md:border-b-0 border-gray-200 dark:border-white/10 h-[250px] overflow-hidden cursor-zoom-in"
+                        onclick="openLightbox('screenshots/dieter_seng_red_elements.png')">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
+                            style="background-image: url('screenshots/dieter_seng_red_elements.png');"></div>
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors"></div>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <span class="text-primary text-[9px] font-black tracking-widest uppercase">03</span>
+
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xl font-black tracking-tighter uppercase">Schreinerei Seng
+                                </h4>
+                                <div class="flex gap-3 mt-2">
+                                    <span
+                                        class="text-white/40 text-[8px] font-bold tracking-widest uppercase">Wordpress</span>
+                                    <span class="text-white/40 text-[8px] font-bold tracking-widest uppercase">Custom
+                                        Theme</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Bottom Wide Projects -->
+
+                    <!-- Project 4: Gasthof Schmitt -->
+                    <div class="md:col-span-6 group relative border-t border-r border-gray-200 dark:border-white/10 h-[250px] overflow-hidden cursor-zoom-in"
+                        onclick="openLightbox('screenshots/gasthof_schmitt_modern_redesign.png')">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
+                            style="background-image: url('screenshots/gasthof_schmitt_modern_redesign.png');"></div>
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors"></div>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <span class="text-primary text-[9px] font-black tracking-widest uppercase">04</span>
+
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xl font-black tracking-tighter uppercase">Gasthof Schmitt
+                                </h4>
+                                <div class="flex gap-3 mt-2">
+                                    <span
+                                        class="text-white/40 text-[8px] font-bold tracking-widest uppercase">Next.js</span>
+                                    <span class="text-white/40 text-[8px] font-bold tracking-widest uppercase">Sanity
+                                        CMS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Bäckerei Antika (Replaces Core V.6) -->
+                    <div class="md:col-span-6 group relative border-t border-gray-200 dark:border-white/10 h-[250px] overflow-hidden cursor-zoom-in"
+                        onclick="openLightbox('screenshots/b_ckerei_antika_modern_redesign_7831302409473841194.png')">
+                        <div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
+                            style="background-image: url('screenshots/b_ckerei_antika_modern_redesign_7831302409473841194.png');">
+                        </div>
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors"></div>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <span class="text-primary text-[9px] font-black tracking-widest uppercase">05</span>
+
+                            </div>
+                            <div>
+                                <h4 class="text-white text-xl font-black tracking-tighter uppercase">Bäckerei Antika
+                                </h4>
+                                <div class="flex gap-3 mt-2">
+                                    <span
+                                        class="text-white/40 text-[8px] font-bold tracking-widest uppercase">React</span>
+                                    <span class="text-white/40 text-[8px] font-bold tracking-widest uppercase">Local
+                                        Biz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </section>
+
+            <!-- Technical Specification Bar -->
+            <section
+                class="border-y border-neutral-border dark:border-white/10 dark:text-white bg-background-light dark:bg-black py-4 px-6 lg:px-12 overflow-x-auto hide-scrollbar font-public transition-colors duration-300">
+                <!-- ... existing spec bar content ... -->
+                <div class="max-w-[1600px] mx-auto flex items-center justify-between gap-12 whitespace-nowrap">
+                    <div class="flex items-center gap-2">
+                        <span class="text-primary font-bold text-[10px]">#</span>
+                        <span
+                            class="text-[10px] font-bold tracking-[0.2em] uppercase opacity-50 text-black dark:text-white">High
+                            Reliability</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-primary font-bold text-[10px]">#</span>
+                        <span
+                            class="text-[10px] font-bold tracking-[0.2em] uppercase opacity-50 text-black dark:text-white">99.9%
+                            Uptime SLA</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-primary font-bold text-[10px]">#</span>
+                        <span
+                            class="text-[10px] font-bold tracking-[0.2em] uppercase opacity-50 text-black dark:text-white">Cloud
+                            Native Arch</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-primary font-bold text-[10px]">#</span>
+                        <span
+                            class="text-[10px] font-bold tracking-[0.2em] uppercase opacity-50 text-black dark:text-white">CI/CD
+                            Automation</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-primary font-bold text-[10px]">#</span>
+                        <span
+                            class="text-[10px] font-bold tracking-[0.2em] uppercase opacity-50 text-black dark:text-white">Microservices</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lightbox Overlay -->
+            <div id="lightbox"
+                class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+                onclick="closeLightbox()">
+                <div
+                    class="absolute top-6 right-6 text-white text-xs font-mono tracking-widest flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                    CLOSE [ESC] <span class="material-symbols-outlined text-lg">close</span>
+                </div>
+                <img id="lightbox-img" src="" alt="Full Screen Project"
+                    class="max-w-full max-h-full object-contain shadow-2xl border border-white/10"
+                    onclick="event.stopPropagation()">
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-gray-200 border border-gray-200">
-                <!-- PHP & Laravel -->
-                <div class="md:col-span-7 bg-white p-8 md:p-12 group hover:bg-gray-50 transition-colors">
-                    <div class="w-12 h-12 border border-black flex items-center justify-center mb-8">
-                        <span class="material-symbols-outlined text-2xl">dns</span>
-                    </div>
-                    <h3 class="font-display font-bold text-3xl text-black mb-4">PHP & LARAVEL ARCHITECTURE</h3>
-                    <p class="text-gray-500 font-light text-lg mb-8 max-w-lg">
-                        Architecting robust, secure backends. From custom CRM systems to scalable SaaS platforms,
-                        building the invisible engines that power business logic with efficiency.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-widest text-black">
-                        <span class="border border-gray-200 px-3 py-1">Laravel 11</span>
-                        <span class="border border-gray-200 px-3 py-1">Livewire</span>
-                        <span class="border border-gray-200 px-3 py-1">MySQL</span>
-                        <span class="border border-gray-200 px-3 py-1">Redis</span>
-                    </div>
-                </div>
+            <!-- Lightbox Script -->
+            <script>
+                function openLightbox(src) {
+                    const lightbox = document.getElementById('lightbox');
+                    const img = document.getElementById('lightbox-img');
+                    img.src = src;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+                function closeLightbox() {
+                    const lightbox = document.getElementById('lightbox');
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+                // Close on ESC
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === "Escape") {
+                        closeLightbox();
+                    }
+                });
+            </script>
 
-                <!-- UI/UX -->
-                <div
-                    class="md:col-span-5 bg-white p-8 md:p-12 group hover:bg-gray-50 transition-colors flex flex-col justify-between">
+            <section
+                class="py-32 px-6 lg:px-24 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-black transition-colors duration-300"
+                id="expertise">
+                <div class="mb-20 flex items-end justify-between border-b border-black dark:border-white pb-4">
                     <div>
-                        <div class="w-12 h-12 border border-black flex items-center justify-center mb-8">
-                            <span class="material-symbols-outlined text-2xl">palette</span>
+                        <span class="text-black dark:text-white font-mono text-xs mb-2 block">03 // CAPABILITIES</span>
+                        <h2 id="expertise-heading"
+                            class="text-5xl text-black dark:text-white font-bold tracking-tighter">EXPERTISE</h2>
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 gap-px bg-gray-200 dark:bg-white/10 border border-gray-200 dark:border-white/10">
+                    <!-- PHP & Laravel -->
+                    <div
+                        class="md:col-span-7 bg-white dark:bg-navy-800 p-8 md:p-12 group hover:bg-gray-50 dark:hover:bg-black transition-colors">
+                        <div
+                            class="w-12 h-12 border border-black dark:border-white flex items-center justify-center mb-8">
+                            <span class="material-symbols-outlined text-2xl text-black dark:text-white">dns</span>
                         </div>
-                        <h3 class="font-display font-bold text-3xl text-black mb-4">UI/UX SYSTEMS</h3>
-                        <p class="text-gray-500 font-light text-sm mb-8">
-                            Designing interfaces that feel as good as they look. User-centric flows with pixel-perfect
-                            execution.
+                        <h3 class="font-display font-bold text-3xl text-black dark:text-white mb-4">PHP & LARAVEL
+                            ARCHITECTURE</h3>
+                        <p class="text-gray-500 dark:text-gray-400 font-light text-lg mb-8 max-w-lg">
+                            Architecting robust, secure backends. From custom CRM systems to scalable SaaS platforms,
+                            building the invisible engines that power business logic with efficiency.
+                        </p>
+                        <div
+                            class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-widest text-black dark:text-white">
+                            <span class="border border-gray-200 dark:border-white/20 px-3 py-1">Laravel 11</span>
+                            <span class="border border-gray-200 dark:border-white/20 px-3 py-1">Livewire</span>
+                            <span class="border border-gray-200 dark:border-white/20 px-3 py-1">MySQL</span>
+                            <span class="border border-gray-200 dark:border-white/20 px-3 py-1">Redis</span>
+                        </div>
+                    </div>
+
+                    <!-- UI/UX -->
+                    <div
+                        class="md:col-span-5 bg-white dark:bg-navy-800 p-8 md:p-12 group hover:bg-gray-50 dark:hover:bg-black transition-colors flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-12 h-12 border border-black dark:border-white flex items-center justify-center mb-8">
+                                <span
+                                    class="material-symbols-outlined text-2xl text-black dark:text-white">palette</span>
+                            </div>
+                            <h3 class="font-display font-bold text-3xl text-black dark:text-white mb-4">UI/UX SYSTEMS
+                            </h3>
+                            <p class="text-gray-500 dark:text-gray-400 font-light text-sm mb-8">
+                                Designing interfaces that feel as good as they look. User-centric flows with
+                                pixel-perfect
+                                execution.
+                            </p>
+                        </div>
+                        <ul class="space-y-4 font-mono text-xs uppercase tracking-wider text-gray-400">
+                            <li class="flex items-center gap-3 text-black dark:text-white">
+                                <span class="w-1 h-1 bg-black dark:bg-white"></span>
+                                Figma Prototyping
+                            </li>
+                            <li class="flex items-center gap-3 text-black dark:text-white">
+                                <span class="w-1 h-1 bg-black dark:bg-white"></span>
+                                Design Systems
+                            </li>
+                            <li class="flex items-center gap-3 text-black dark:text-white">
+                                <span class="w-1 h-1 bg-black dark:bg-white"></span>
+                                User Research
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- API -->
+                    <div
+                        class="md:col-span-4 bg-white dark:bg-navy-800 p-8 group hover:bg-gray-50 dark:hover:bg-black transition-colors">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="w-10 h-10 border border-black dark:border-white flex items-center justify-center">
+                                <span class="material-symbols-outlined text-xl text-black dark:text-white">hub</span>
+                            </div>
+
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-black dark:text-white mb-2">API INTEGRATION</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wide">
+                            RESTful & GraphQL API development and 3rd party integrations.
                         </p>
                     </div>
-                    <ul class="space-y-4 font-mono text-xs uppercase tracking-wider text-gray-400">
-                        <li class="flex items-center gap-3 text-black">
-                            <span class="w-1 h-1 bg-black"></span>
-                            Figma Prototyping
-                        </li>
-                        <li class="flex items-center gap-3 text-black">
-                            <span class="w-1 h-1 bg-black"></span>
-                            Design Systems
-                        </li>
-                        <li class="flex items-center gap-3 text-black">
-                            <span class="w-1 h-1 bg-black"></span>
-                            User Research
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- API -->
-                <div class="md:col-span-4 bg-white p-8 group hover:bg-gray-50 transition-colors">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-10 h-10 border border-black flex items-center justify-center">
-                            <span class="material-symbols-outlined text-xl">hub</span>
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
-                    </div>
-                    <h3 class="font-display font-bold text-xl text-black mb-2">API INTEGRATION</h3>
-                    <p class="text-gray-500 text-xs font-mono uppercase tracking-wide">
-                        RESTful & GraphQL API development and 3rd party integrations.
-                    </p>
-                </div>
-
-                <!-- E-commerce -->
-                <div class="md:col-span-4 bg-white p-8 group hover:bg-gray-50 transition-colors">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-10 h-10 border border-black flex items-center justify-center">
-                            <span class="material-symbols-outlined text-xl">shopping_cart</span>
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
-                    </div>
-                    <h3 class="font-display font-bold text-xl text-black mb-2">E-COMMERCE</h3>
-                    <p class="text-gray-500 text-xs font-mono uppercase tracking-wide">
-                        Scalable storefronts using Shopify, WooCommerce, or custom Laravel.
-                    </p>
-                </div>
-
-                <!-- Call to Action -->
-                <div
-                    class="md:col-span-4 bg-black p-8 group hover:bg-gray-900 transition-colors flex flex-col justify-between text-white">
-                    <div>
-                        <h3 class="font-display font-bold text-xl mb-1">READY TO SCALE?</h3>
-                        <p class="text-gray-400 text-xs font-mono uppercase">Let's build something exceptional.</p>
-                    </div>
+                    <!-- E-commerce -->
                     <div
-                        class="w-10 h-10 border border-white/20 flex items-center justify-center self-end group-hover:bg-white group-hover:text-black transition-all">
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FIVERR REVIEWS SECTION -->
-            <section class="py-32 px-6 lg:px-24 border-b border-gray-200 bg-white" id="fiverr-reviews">
-                <div class="mb-20 flex items-end justify-between border-b border-black pb-4">
-                    <div>
-                        <span class="text-black font-mono text-xs mb-2 block">04 // VALIDATION</span>
-                        <div class="flex items-center gap-4">
-                            <h2 class="text-5xl text-black font-bold tracking-tighter font-manrope">FIVERR REVIEWS</h2>
-                            <svg class="h-8 w-auto mb-1" viewBox="0 0 89 27" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M84.3 11.2V11C84.3 6.6 81.3 3.5 76.8 3.5C72.2 3.5 69.1 6.8 69.1 11.4C69.1 16.3 72.4 19.3 77.3 19.3C80.2 19.3 82.3 18.2 83.7 16.1L80.9 14.5C80.1 15.6 79 16.1 77.4 16.1C75.2 16.1 73.4 14.8 73.1 12.3H84.3C84.3 12 84.3 11.6 84.3 11.2ZM73.2 9.5C73.6 7.4 75 5.9 76.9 5.9C78.8 5.9 80.1 7.3 80.3 9.5H73.2ZM65.8 19V3.8H61.7V19H65.8ZM58.3 19V8.6C58.3 6.2 57 5.1 55.1 5.1C53 5.1 51.5 6.4 51.5 8.9V19H47.4V8.6C47.4 6.2 46.1 5.1 44.2 5.1C42.1 5.1 40.6 6.4 40.6 8.9V19H36.5V3.8H40.6V6C41.5 4.5 43.1 3.5 45.1 3.5C47.1 3.5 48.6 4.3 49.5 5.7C50.6 4.3 52.3 3.5 54.4 3.5C58.4 3.5 62.4 5.9 62.4 11.1V19H58.3ZM33.2 5.5C33.2 6.6 32.3 7.5 31.2 7.5C30.1 7.5 29.2 6.6 29.2 5.5C29.2 4.4 30.1 3.5 31.2 3.5C32.3 3.5 33.2 4.4 33.2 5.5ZM33.2 19V8.9H29.1V19H33.2ZM19.2 19V3.8H26.8V7.1H23.3V10.1H26.3V13.3H23.3V19H19.2ZM0.5 4.7C1.4 4 2.8 3.5 4.3 3.5C6.1 3.5 7.4 4 8.2 4.9L6.5 7.6C6 7.1 5.4 6.8 4.6 6.8C3.8 6.8 3.4 7.2 3.4 7.6C3.4 8.1 3.8 8.4 5.2 8.7C7.8 9.2 9.4 10.4 9.4 12.8C9.4 14.3 8.8 15.6 7.6 16.3C6.7 16.9 5.5 17.2 4.1 17.2C2.1 17.2 0.7 16.5 0 15.5L1.8 12.8C2.3 13.5 3.1 13.9 4.1 13.9C4.9 13.9 5.4 13.6 5.4 13C5.4 12.5 5 12.2 3.6 11.9C1.2 11.4 0.5 10.1 0.5 7.8C0.5 6.6 0.2 5.6 0.5 4.7Z"
-                                    fill="black" />
-                                <path
-                                    d="M89 4.8C89 5.5 88.4 6.1 87.7 6.1C87 6.1 86.4 5.5 86.4 4.8C86.4 4.1 87 3.5 87.7 3.5C88.4 3.5 89 4.1 89 4.8ZM88.7 4.8C88.7 4.3 88.2 3.8 87.7 3.8C87.1 3.8 86.7 4.2 86.7 4.8C86.7 5.3 87.1 5.8 87.7 5.8C88.2 5.8 88.7 5.3 88.7 4.8ZM87.2 5.5V4.1H87.6C87.8 4.1 88 4.1 88.1 4.2C88.2 4.2 88.3 4.4 88.3 4.5C88.3 4.7 88.2 4.8 88.1 4.9C88 5 87.9 5 87.7 5L88.2 5.5H87.9L87.4 5H87.4V5.5H87.2ZM87.4 4.8H87.6C87.8 4.8 87.9 4.8 88 4.7C88 4.7 88.1 4.6 88.1 4.5C88.1 4.5 88.1 4.4 88 4.3C88 4.3 87.8 4.3 87.7 4.3H87.4V4.8Z"
-                                    fill="black" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="text-right hidden md:block">
-                        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-1">Cumulative
-                            Rating</div>
-                        <div
-                            class="text-3xl font-bold tracking-tighter flex items-center justify-end gap-2 font-manrope">
-                            5.0 <span class="material-symbols-outlined text-2xl">star</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="fiverr-reviews-container" class="grid grid-cols-1 gap-12">
-                    <!-- Dynamic Reviews Injected Here -->
-                </div>
-
-                <!-- Load More Button -->
-                <div class="mt-20 flex justify-center">
-                    <button id="fiverr-load-more"
-                        class="group relative px-8 py-4 bg-transparent border border-black overflow-hidden transition-all hover:bg-black hover:text-white">
-                        <span class="relative z-10 font-manrope font-bold text-sm tracking-[0.2em] uppercase">Show Next
-                            Batch</span>
-                    </button>
-                </div>
-
-                <div class="mt-12 text-center">
-                    <div class="inline-flex items-center gap-2 justify-center opacity-50 grayscale">
-                        <span class="text-[10px] font-bold uppercase tracking-widest">Verified by</span>
-                        <svg class="h-4 w-auto" fill="none" viewBox="0 0 89 27" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M84.3 11.2V11C84.3 6.6 81.3 3.5 76.8 3.5C72.2 3.5 69.1 6.8 69.1 11.4C69.1 16.3 72.4 19.3 77.3 19.3C80.2 19.3 82.3 18.2 83.7 16.1L80.9 14.5C80.1 15.6 79 16.1 77.4 16.1C75.2 16.1 73.4 14.8 73.1 12.3H84.3C84.3 12 84.3 11.6 84.3 11.2ZM73.2 9.5C73.6 7.4 75 5.9 76.9 5.9C78.8 5.9 80.1 7.3 80.3 9.5H73.2ZM65.8 19V3.8H61.7V19H65.8ZM58.3 19V8.6C58.3 6.2 57 5.1 55.1 5.1C53 5.1 51.5 6.4 51.5 8.9V19H47.4V8.6C47.4 6.2 46.1 5.1 44.2 5.1C42.1 5.1 40.6 6.4 40.6 8.9V19H36.5V3.8H40.6V6C41.5 4.5 43.1 3.5 45.1 3.5C47.1 3.5 48.6 4.3 49.5 5.7C50.6 4.3 52.3 3.5 54.4 3.5C58.4 3.5 62.4 5.9 62.4 11.1V19H58.3ZM33.2 5.5C33.2 6.6 32.3 7.5 31.2 7.5C30.1 7.5 29.2 6.6 29.2 5.5C29.2 4.4 30.1 3.5 31.2 3.5C32.3 3.5 33.2 4.4 33.2 5.5ZM33.2 19V8.9H29.1V19H33.2ZM19.2 19V3.8H26.8V7.1H23.3V10.1H26.3V13.3H23.3V19H19.2ZM0.5 4.7C1.4 4 2.8 3.5 4.3 3.5C6.1 3.5 7.4 4 8.2 4.9L6.5 7.6C6 7.1 5.4 6.8 4.6 6.8C3.8 6.8 3.4 7.2 3.4 7.6C3.4 8.1 3.8 8.4 5.2 8.7C7.8 9.2 9.4 10.4 9.4 12.8C9.4 14.3 8.8 15.6 7.6 16.3C6.7 16.9 5.5 17.2 4.1 17.2C2.1 17.2 0.7 16.5 0 15.5L1.8 12.8C2.3 13.5 3.1 13.9 4.1 13.9C4.9 13.9 5.4 13.6 5.4 13C5.4 12.5 5 12.2 3.6 11.9C1.2 11.4 0.5 10.1 0.5 7.8C0.5 6.6 0.2 5.6 0.5 4.7Z"
-                                fill="black"></path>
-                            <path
-                                d="M89 4.8C89 5.5 88.4 6.1 87.7 6.1C87 6.1 86.4 5.5 86.4 4.8C86.4 4.1 87 3.5 87.7 3.5C88.4 3.5 89 4.1 89 4.8ZM88.7 4.8C88.7 4.3 88.2 3.8 87.7 3.8C87.1 3.8 86.7 4.2 86.7 4.8C86.7 5.3 87.1 5.8 87.7 5.8C88.2 5.8 88.7 5.3 88.7 4.8ZM87.2 5.5V4.1H87.6C87.8 4.1 88 4.1 88.1 4.2C88.2 4.2 88.3 4.4 88.3 4.5C88.3 4.7 88.2 4.8 88.1 4.9C88 5 87.9 5 87.7 5L88.2 5.5H87.9L87.4 5H87.4V5.5H87.2ZM87.4 4.8H87.6C87.8 4.8 87.9 4.8 88 4.7C88 4.7 88.1 4.6 88.1 4.5C88.1 4.5 88.1 4.4 88 4.3C88 4.3 87.8 4.3 87.7 4.3H87.4V4.8Z"
-                                fill="black"></path>
-                        </svg>
-                    </div>
-                </div>
-            </section>
-
-            <section class="py-32 px-6 lg:px-24 bg-obsidian relative overflow-hidden" id="about">
-                <div class="absolute top-0 left-0 w-full h-px bg-gray-200"></div>
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-24">
-                        <span class="text-black font-mono text-xs mb-6 block border-b border-black w-max pb-1">05 //
-                            PROTOCOL</span>
-                        <div class="max-w-2xl">
-                            <h2 class="text-4xl md:text-5xl font-light text-black mb-8 leading-tight">
-                                Precision in every pixel. <br />Logic in every line.
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-500">
-                                <div class="flex flex-col border-l border-gray-300 pl-4">
-                                    <strong class="text-black block mb-2 font-bold">ARCHITECT</strong>
-                                    Database design &amp; system planning.
-                                </div>
-                                <div class="flex flex-col border-l border-gray-300 pl-4">
-                                    <strong class="text-black block mb-2 font-bold">DEVELOP</strong>
-                                    Robust PHP/Laravel backends.
-                                </div>
-                                <div class="flex flex-col border-l border-gray-300 pl-4">
-                                    <strong class="text-black block mb-2 font-bold">REFINE</strong>
-                                    Polished interactions &amp; visual design.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative py-12 md:py-20 border-t border-gray-200">
-                        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-                            <div class="flex items-center gap-6">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                    <span class="font-mono text-xs uppercase tracking-widest text-gray-400">Upwork
-                                        Reviews</span>
-                                    <svg class="h-4 w-auto grayscale opacity-60" viewBox="0 0 512 512"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M351.9 238.2c-15.1-41.2-39.7-77.9-71.1-105.7 32.7-27.1 59.1-60.6 77.6-98.8 3.5-7.3-6.1-13.6-10.9-8.4-32.9 36.6-70.9 66.8-112.5 89.2-31.5-49.8-56-104.6-72.2-161.7-2.6-9.1-15.4-8.2-16.7 1.3-9.6 69.8 4.4 145.5 48.6 205.1-39.4 34.2-83.6 62.1-131.6 82.5-12.7 5.4-6.9 24.6 6.8 24.6 80.9 0 168.2-37.4 227-101.5 13.9 29.8 23.3 61.2 27.2 93.3 2.1 16.9 27.6 15.3 27.2-1.7-1.1-45.2-13.6-88.7-36.2-127.1 36.3 32.3 65.5 73.8 83.3 119.5 5.5 14.1 26.6 6.2 22.5-7.3-15.4-52.2-46.6-98.9-89.1-133.4z"
-                                            fill="#000" />
-                                    </svg>
-                                </div>
-                                <a href="https://www.upwork.com/freelancers/~016b5e05cea42b5ba3?mp_source=share"
-                                    target="_blank"
-                                    class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-black border border-black px-3 py-1 hover:bg-black hover:text-white transition-colors">
-                                    <span>Verify Source</span>
-                                    <span class="material-symbols-outlined text-[10px]">open_in_new</span>
-                                </a>
-                            </div>
-                            <div class="flex gap-2">
-                                <button id="prevReview"
-                                    class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <button id="nextReview"
-                                    class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-                                    <span class="material-symbols-outlined">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="reviews-carousel"
-                            class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scrollbar-hide"
-                            style="scroll-behavior: smooth;">
-                            <!-- Reviews will be injected here via JS -->
+                        class="md:col-span-4 bg-white dark:bg-navy-800 p-8 group hover:bg-gray-50 dark:hover:bg-black transition-colors">
+                        <div class="flex justify-between items-start mb-6">
                             <div
-                                class="min-w-full md:min-w-[600px] snap-center border border-gray-200 p-8 md:p-12 bg-gray-50 flex items-center justify-center">
-                                <div class="flex items-center gap-3 text-gray-400 animate-pulse">
-                                    <span class="material-symbols-outlined">sync</span>
-                                    <span class="font-mono text-xs uppercase tracking-widest">Decrypting Data...</span>
+                                class="w-10 h-10 border border-black dark:border-white flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-xl text-black dark:text-white">shopping_cart</span>
+                            </div>
+
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-black dark:text-white mb-2">E-COMMERCE</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs font-mono uppercase tracking-wide">
+                            Scalable storefronts using Shopify, WooCommerce, or custom Laravel.
+                        </p>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div
+                        class="md:col-span-4 bg-black dark:bg-white p-8 group hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors flex flex-col justify-between text-white dark:text-black">
+                        <div>
+                            <h3 id="expertise-cta-title" class="font-display font-bold text-xl mb-4">READY TO SCALE?
+                            </h3>
+                            <div class="terminal-instance w-full max-w-full" data-height="compact"
+                                data-prompt='<span class="text-yellow-500">vis@axis</span>:$ '></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIVERR REVIEWS SECTION -->
+                <section
+                    class="py-32 border-b border-gray-200 dark:border-white/10 bg-white dark:bg-black transition-colors duration-300"
+                    id="fiverr-reviews">
+                    <div class="mb-20 flex items-end justify-between border-b border-black dark:border-white pb-4">
+                        <div>
+                            <span class="text-black dark:text-white font-mono text-xs mb-2 block">04 //
+                                VALIDATION</span>
+                            <div class="flex items-center gap-4">
+                                <h2 id="reviews-heading"
+                                    class="text-5xl text-black dark:text-white font-bold tracking-tighter font-manrope">
+                                    FIVERR REVIEWS
+                                </h2>
+                                <img src="fiver.svg" alt="Fiverr" loading="lazy"
+                                    class="h-8 w-auto mb-1 hover:brightness-110 transition-all">
+                            </div>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-1">Cumulative
+                                Rating</div>
+                            <div
+                                class="text-3xl font-bold tracking-tighter flex items-center justify-end gap-2 font-manrope text-black dark:text-white">
+                                5.0 <span class="material-symbols-outlined text-2xl">star</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fiverr-reviews-container" class="grid grid-cols-1 gap-12">
+                        <!-- Dynamic Reviews Injected Here -->
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="mt-20 flex justify-center">
+                        <button id="fiverr-load-more"
+                            class="group relative px-8 py-4 bg-transparent border border-black dark:border-white overflow-hidden transition-all hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black text-black dark:text-white">
+                            <span class="relative z-10 font-manrope font-bold text-sm tracking-[0.2em] uppercase">Show
+                                Next
+                                Batch</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-12 text-center">
+                        <div
+                            class="inline-flex items-center gap-2 justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 text-black dark:text-white">
+                            <span class="text-[10px] font-bold uppercase tracking-widest">Verified by</span> <img
+                                src="fiver.svg" alt="Fiverr" class="h-5 w-auto">
+                        </div>
+                    </div>
+                </section>
+
+                <section
+                    class="py-32 bg-obsidian dark:bg-navy-900 relative overflow-hidden transition-colors duration-300"
+                    id="about">
+                    <div class="absolute top-0 left-0 w-full h-px bg-gray-200 dark:bg-white/10"></div>
+                    <div class="max-w-7xl mx-auto">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-24">
+                            <span
+                                class="text-black dark:text-white font-mono text-xs mb-6 block border-b border-black dark:border-white w-max pb-1">05
+                                //
+                                PROTOCOL</span>
+                            <div class="max-w-2xl">
+                                <h2
+                                    class="text-4xl md:text-5xl font-light text-black dark:text-white mb-8 leading-tight">
+                                    Precision in every pixel. <br />Logic in every line.
+                                </h2>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-500 dark:text-gray-400">
+                                    <div class="flex flex-col border-l border-gray-300 dark:border-white/20 pl-4">
+                                        <strong
+                                            class="text-black dark:text-white block mb-2 font-bold">ARCHITECT</strong>
+                                        Database design &amp; system planning.
+                                    </div>
+                                    <div class="flex flex-col border-l border-gray-300 dark:border-white/20 pl-4">
+                                        <strong class="text-black dark:text-white block mb-2 font-bold">DEVELOP</strong>
+                                        Robust PHP/Laravel backends.
+                                    </div>
+                                    <div class="flex flex-col border-l border-gray-300 dark:border-white/20 pl-4">
+                                        <strong class="text-black dark:text-white block mb-2 font-bold">REFINE</strong>
+                                        Polished interactions &amp; visual design.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative py-12 md:py-20 border-t border-gray-200">
+                            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+                                <div class="flex items-center gap-6">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        <span class="font-mono text-xs uppercase tracking-widest text-gray-400">Upwork
+                                            Reviews</span>
+                                        <img src="upwork.svg" alt="Upwork"
+                                            class="h-6 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                                    </div>
+                                    <a href="https://www.upwork.com/freelancers/~016b5e05cea42b5ba3?mp_source=share"
+                                        target="_blank"
+                                        class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-black border border-black px-3 py-1 hover:bg-black hover:text-white transition-colors">
+                                        <span>Verify Source</span>
+                                        <span class="material-symbols-outlined text-[10px]">open_in_new</span>
+                                    </a>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button id="prevReview"
+                                        class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined">arrow_back</span>
+                                    </button>
+                                    <button id="nextReview"
+                                        class="w-10 h-10 border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="reviews-carousel"
+                                class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scrollbar-hide"
+                                style="scroll-behavior: smooth;">
+                                <!-- Reviews will be injected here via JS -->
+                                <div
+                                    class="min-w-full md:min-w-[600px] snap-center border border-gray-200 p-8 md:p-12 bg-gray-50 flex items-center justify-center">
+                                    <div class="flex items-center gap-3 text-gray-400 animate-pulse">
+                                        <span class="material-symbols-outlined">sync</span>
+                                        <span class="font-mono text-xs uppercase tracking-widest">Decrypting
+                                            Data...</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <script src="reviews.js"></script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const carousel = document.getElementById('reviews-carousel');
-                    const prevBtn = document.getElementById('prevReview');
-                    const nextBtn = document.getElementById('nextReview');
+                <script src="reviews.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const carousel = document.getElementById('reviews-carousel');
+                        const prevBtn = document.getElementById('prevReview');
+                        const nextBtn = document.getElementById('nextReview');
 
-                    function renderReviews(data) {
-                        carousel.innerHTML = ''; // Clear loader
+                        function renderReviews(data) {
+                            carousel.innerHTML = ''; // Clear loader
 
-                        data.forEach(review => {
-                            const stars = Array(review.rating).fill('<span class="material-symbols-outlined text-sm">star</span>').join('');
+                            data.forEach(review => {
+                                const stars = Array(review.rating).fill('<span class="material-symbols-outlined text-sm">star</span>').join('');
 
-                            const card = `
+                                const card = `
                                 <div class="min-w-full w-full snap-center select-none">
-                                    <span class="text-6xl text-gray-200 font-serif leading-none select-none pointer-events-none">"</span>
+                                    <span class="text-6xl text-gray-200 dark:text-gray-700 font-serif leading-none select-none pointer-events-none">"</span>
                                     <div class="relative z-10 pl-6 md:pl-12 -mt-8">
-                                        <p class="text-2xl md:text-4xl text-black font-light leading-tight tracking-tight mb-8">
+                                        <p class="text-2xl md:text-4xl text-black dark:text-white font-light leading-tight tracking-tight mb-8">
                                             ${review.text}
                                         </p>
                                         
-                                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-t border-gray-200 pt-6">
+                                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-t border-gray-200 dark:border-white/10 pt-6">
                                             <div class="flex items-center gap-4">
-                                                <div class="w-10 h-10 bg-black text-white flex items-center justify-center rounded-sm font-bold font-display text-xl">
+                                                <div class="w-10 h-10 bg-black dark:bg-white text-white dark:text-black flex items-center justify-center rounded-sm font-bold font-display text-xl">
                                                     ${review.client.charAt(0)}
                                                 </div>
                                                 <div>
-                                                    <p class="text-black font-bold text-sm tracking-wide uppercase">${review.client}</p>
+                                                    <p class="text-black dark:text-white font-bold text-sm tracking-wide uppercase">${review.client}</p>
                                                     <p class="text-gray-500 text-[10px] uppercase tracking-wider font-mono">${review.role}</p>
                                                 </div>
                                             </div>
                                             
                                             <div class="flex items-center gap-6">
-                                                <div class="flex text-black gap-1">
+                                                <div class="flex text-black dark:text-white gap-1">
                                                     ${stars}
                                                 </div>
-                                                <div class="h-8 w-px bg-gray-200 hidden md:block"></div>
+                                                <div class="h-8 w-px bg-gray-200 dark:bg-white/10 hidden md:block"></div>
                                                 <div class="flex flex-col text-right">
                                                     <span class="text-[10px] font-mono text-green-600 uppercase tracking-widest flex items-center gap-1 justify-end">
                                                         <span class="material-symbols-outlined text-[10px]">verified</span> Verified
@@ -863,67 +1030,90 @@
                                     </div>
                                 </div>
                             `;
-                            carousel.innerHTML += card;
+                                carousel.innerHTML += card;
+                            });
+                        }
+
+                        // Check if reviewsData is loaded (from reviews.js)
+                        if (window.fiverrReviewsData && window.fiverrReviewsData.length > 0) {
+                            renderReviews(window.fiverrReviewsData);
+                        } else {
+                            console.error('Reviews data not found');
+                            carousel.innerHTML = '<div class="p-8 text-red-500 font-mono text-xs">ERROR: DATA CORRUPTED OR MISSING</div>';
+                        }
+
+                        // Navigation
+                        prevBtn.addEventListener('click', () => {
+                            carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
                         });
-                    }
 
-                    // Check if reviewsData is loaded (from reviews.js)
-                    if (window.reviewsData && window.reviewsData.length > 0) {
-                        renderReviews(window.reviewsData);
-                    } else {
-                        console.error('Reviews data not found');
-                        carousel.innerHTML = '<div class="p-8 text-red-500 font-mono text-xs">ERROR: DATA CORRUPTED OR MISSING</div>';
-                    }
-
-                    // Navigation
-                    prevBtn.addEventListener('click', () => {
-                        carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
+                        nextBtn.addEventListener('click', () => {
+                            carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+                        });
                     });
+                </script>
+                <footer id="contact"
+                    class="py-24 px-6 lg:px-24 bg-white dark:bg-black border-t border-gray-200 dark:border-white/10 relative overflow-hidden transition-colors duration-300">
+                    <div
+                        class="absolute bottom-0 left-0 w-full text-center pointer-events-none opacity-[0.02] dark:opacity-[0.05]">
+                        <span
+                            class="text-[12rem] md:text-[24rem] font-bold text-black dark:text-white uppercase leading-none tracking-tighter truncate">ADNAN</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
+                        <span id="footer-terminate"
+                            class="text-black dark:text-white font-mono text-xs mb-6 border border-black dark:border-white px-3 py-1">06
+                            // TERMINATE
+                            SESSION</span>
+                        <a class="group relative inline-block py-4" href="mailto:adnanhaider0347@gmail.com">
+                            <h2
+                                class="text-5xl md:text-8xl font-bold text-black dark:text-white tracking-tighter mb-2 hover:text-primary transition-colors duration-300">
+                                adnanhaider0347@gmail.com
+                            </h2>
+                            <div
+                                class="h-px w-0 bg-primary mx-auto group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </a>
+                        <div class="mt-8 flex flex-col items-center gap-2">
+                            <a href="https://wa.me/923472926359" target="_blank" rel="noopener noreferrer"
+                                class="text-xl md:text-2xl font-mono text-black dark:text-white hover:text-green-600 transition-colors flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                WhatsApp: +92 347 292 6359
+                            </a>
+                        </div>
+                        <p id="footer-avail" class="text-gray-500 dark:text-gray-400 mt-8 max-w-md mx-auto font-light">
+                            Available for freelance opportunities and long-term contracts.
+                        </p>
 
-                    nextBtn.addEventListener('click', () => {
-                        carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
-                    });
-                });
-            </script>
-            <footer class="py-24 px-6 lg:px-24 bg-white border-t border-gray-200 relative overflow-hidden">
-                <div class="absolute bottom-0 left-0 w-full text-center pointer-events-none opacity-[0.02]">
-                    <span
-                        class="text-[12rem] md:text-[24rem] font-bold text-black uppercase leading-none tracking-tighter truncate">ADNAN</span>
-                </div>
-                <div class="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
-                    <span class="text-black font-mono text-xs mb-6 border border-black px-3 py-1">06 // TERMINATE
-                        SESSION</span>
-                    <a class="group relative inline-block py-4" href="mailto:hello@adnan.dev">
-                        <h2
-                            class="text-6xl md:text-9xl font-bold text-black tracking-tighter mb-2 hover:text-primary transition-colors duration-300">
-                            LET'S TALK
-                        </h2>
+                        <div class="mt-12 w-full max-w-lg mx-auto terminal-instance"
+                            data-prompt='<span class="text-red-500">root@details</span>:# '></div>
+                        <div class="flex gap-12 mt-16">
+                            <a class="text-black dark:text-white hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
+                                href="#">LinkedIn</a>
+                            <a class="text-black dark:text-white hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
+                                href="#">GitHub</a>
+                            <a class="text-black dark:text-white hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
+                                href="#">Twitter/X</a>
+                        </div>
                         <div
-                            class="h-px w-0 bg-primary mx-auto group-hover:w-full transition-all duration-500 ease-out">
+                            class="mt-32 w-full flex justify-between items-end border-t border-gray-100 dark:border-white/10 pt-8">
+                            <div class="text-left">
+                                <p class="text-gray-400 dark:text-gray-500 text-[10px] font-mono uppercase">© 2026 ADNAN
+                                    PORTFOLIO</p>
+                                <p class="text-gray-400 dark:text-gray-500 text-[10px] font-mono uppercase mt-1">SYSTEM
+                                    VERSION 4.2.0</p>
+                            </div>
+                            <p class="text-gray-400 dark:text-gray-500 text-[10px] font-mono uppercase">DESIGNED &amp;
+                                DEVELOPED IN LIGHT.
+                            </p>
                         </div>
-                    </a>
-                    <p class="text-gray-500 mt-8 max-w-md mx-auto font-light">
-                        Available for freelance opportunities and long-term contracts starting Q3 2026.
-                    </p>
-                    <div class="flex gap-12 mt-16">
-                        <a class="text-black hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
-                            href="#">LinkedIn</a>
-                        <a class="text-black hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
-                            href="#">GitHub</a>
-                        <a class="text-black hover:text-primary transition-colors uppercase text-xs font-bold tracking-widest"
-                            href="#">Twitter/X</a>
                     </div>
-                    <div class="mt-32 w-full flex justify-between items-end border-t border-gray-100 pt-8">
-                        <div class="text-left">
-                            <p class="text-gray-400 text-[10px] font-mono uppercase">© 2026 ADNAN PORTFOLIO</p>
-                            <p class="text-gray-400 text-[10px] font-mono uppercase mt-1">SYSTEM VERSION 4.2.0</p>
-                        </div>
-                        <p class="text-gray-400 text-[10px] font-mono uppercase">DESIGNED &amp; DEVELOPED IN LIGHT.</p>
-                    </div>
-                </div>
-            </footer>
+                </footer>
     </main>
     <script src="fiverr_reviews.js"></script>
+    <script src="js/localization.js"></script>
+    <script src="js/system_monitor.js"></script>
+    <script src="js/terminal_contact.js"></script>
+    <script src="js/audio_manager.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const fiverrContainer = document.getElementById('fiverr-reviews-container');
@@ -951,13 +1141,13 @@
                         const delay = (index % itemsPerPage) * 100;
 
                         const html = `
-                        <article class="group border-b border-gray-200 hover:bg-gray-50 transition-all duration-500 opacity-0 translate-y-4 animate-in" style="animation: fadeIn 0.5s ease-out ${delay}ms forwards;">
+                        <article class="group border-b border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-500 opacity-0 translate-y-4 animate-in" style="animation: fadeIn 0.5s ease-out ${delay}ms forwards;">
                             <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[300px]">
-                                <div class="lg:col-span-3 border-r border-gray-100 p-8 flex flex-col justify-between">
+                                <div class="lg:col-span-3 border-r border-gray-100 dark:border-white/10 p-8 flex flex-col justify-between">
                                     <div>
                                         <div class="flex items-center gap-2 mb-6">
-                                            <div class="w-2 h-2 bg-black"></div>
-                                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] font-manrope">${review.client}</span>
+                                            <div class="w-2 h-2 bg-black dark:bg-white"></div>
+                                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] font-manrope text-black dark:text-white">${review.client}</span>
                                         </div>
                                         <div class="space-y-2">
                                             <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Project: ${review.project}</div>
@@ -966,16 +1156,21 @@
                                         </div>
                                     </div>
                                     <div class="mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                        <span class="text-[10px] font-bold uppercase tracking-widest border border-black px-3 py-1 font-manrope">Verified Order</span>
+                                        
+<div class="flex items-center gap-2 border border-black dark:border-white px-3 py-1 w-fit">
+    <img src="fiver.svg" alt="Fiverr" class="h-3 w-auto object-contain">
+    <span class="text-[10px] font-bold uppercase tracking-widest font-manrope text-black dark:text-white">Verified Order</span>
+</div>
+
                                     </div>
                                 </div>
                                 <div class="lg:col-span-9 p-8 lg:p-12 flex flex-col justify-center relative">
-                                    <span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-gray-100 rotate-180">format_quote</span>
-                                    <blockquote class="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-8 relative z-10 font-manrope">
+                                    <span class="material-symbols-outlined absolute top-8 right-8 text-4xl text-gray-100 dark:text-white/10 rotate-180">format_quote</span>
+                                    <blockquote class="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-black dark:text-white mb-8 relative z-10 font-manrope">
                                         "${review.quote}"
                                     </blockquote>
-                                    <div class="flex justify-end items-end border-t border-gray-100 pt-6">
-                                        <div class="hidden md:block w-12 h-12 grayscale opacity-50 bg-gray-200 bg-cover bg-center border border-gray-100" style="background-image: url('${review.image}')"></div>
+                                    <div class="flex justify-end items-end border-t border-gray-100 dark:border-white/10 pt-6">
+                                        <div class="hidden md:block w-12 h-12 grayscale opacity-50 bg-gray-200 dark:bg-gray-800 bg-cover bg-center border border-gray-100 dark:border-white/10" style="background-image: url('${review.image}')"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1010,6 +1205,63 @@
                     loadMoreBtn.addEventListener('click', renderReviews);
                 }
             }
+        });
+    </script>
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[9999] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <button id="lightbox-close"
+            class="absolute top-8 right-8 text-white text-4xl hover:text-gray-300 transition-colors">&times;</button>
+        <img id="lightbox-img" src="" alt="Full Project Screenshot"
+            class="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-sm transform scale-95 transition-transform duration-300">
+        <div class="absolute bottom-8 left-0 right-0 text-center text-white/50 font-mono text-xs">CLICK ANYWHERE TO
+            CLOSE</div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+        const projectImages = document.querySelectorAll('.project-card img');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+            // Trigger reflow
+            void lightbox.offsetWidth;
+            lightbox.classList.remove('opacity-0');
+            lightboxImg.classList.remove('scale-95');
+            lightboxImg.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.add('scale-95');
+            lightboxImg.classList.remove('scale-100');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Add Click Listeners to Project Images
+        projectImages.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent bubbling if needed
+                openLightbox(img.src);
+            });
+        });
+
+        // Close Listeners
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', closeLightbox);
+
+        // Escape Key Close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>
